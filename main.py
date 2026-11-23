@@ -1,6 +1,3 @@
-"""Project entry point."""
-
-
 def main() -> None:
     print("Project scaffold ready. Environment, training and visualization are added in later stages.")
 
