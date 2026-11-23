@@ -192,12 +192,21 @@ NODE_COORDS, ROAD_TABLES = _build_road_tables()
 class MaternalReferralEnv(gym.Env):
     metadata = {"render_modes": ["ansi", "human"], "render_fps": 4}
 
-    def __init__(self, render_mode=None, reward_config=None, max_steps=3000):
+    def __init__(
+        self,
+        render_mode=None,
+        reward_config=None,
+        max_steps=3000,
+        rain_prob=RAIN_PROB,
+        general_duty_per_day=GENERAL_DUTY_PER_DAY,
+    ):
         if render_mode is not None and render_mode not in self.metadata["render_modes"]:
             raise ValueError(f"Unsupported render_mode {render_mode}")
         self.render_mode = render_mode
         self.rewards = {**DEFAULT_REWARDS, **(reward_config or {})}
         self.max_steps = max_steps
+        self.rain_prob = rain_prob
+        self.general_duty_per_day = general_duty_per_day
         self.action_space = spaces.Discrete(N_ACTIONS)
         self.observation_space = spaces.Dict(
             {
@@ -220,7 +229,7 @@ class MaternalReferralEnv(gym.Env):
         self.t = 0.0
         self.steps = 0
         self.total_km = 0.0
-        self.rain = rng.random(EPISODE_DAYS) < RAIN_PROB
+        self.rain = rng.random(EPISODE_DAYS) < self.rain_prob
         self.surgery_ready = np.zeros((EPISODE_DAYS, N_HOSPITALS), dtype=bool)
         self.neonatal_ready = np.zeros((EPISODE_DAYS, N_HOSPITALS), dtype=bool)
         self.background = np.zeros((EPISODE_DAYS, N_HOSPITALS), dtype=np.int64)
@@ -419,7 +428,7 @@ class MaternalReferralEnv(gym.Env):
         return referrals
 
     def _generate_duties(self, rng):
-        count = rng.poisson(GENERAL_DUTY_PER_DAY * EPISODE_DAYS)
+        count = rng.poisson(self.general_duty_per_day * EPISODE_DAYS)
         starts = np.sort(rng.uniform(0.0, EPISODE_MINUTES, size=count))
         return [[float(s), float(s + rng.uniform(*GENERAL_DUTY_MINUTES))] for s in starts]
 
