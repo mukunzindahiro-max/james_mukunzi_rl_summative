@@ -384,7 +384,7 @@ class MaternalReferralEnv(gym.Env):
             "action_mask": self.action_mask().tolist(),
             "last_decision": self.last_decision,
             "metrics": self.metrics(),
-            "events": self.events[-12:],
+            "events": self.events[-40:],
         })
 
     def _generate_referrals(self, rng):
@@ -732,6 +732,8 @@ class MaternalReferralEnv(gym.Env):
             "waited_minutes": (r["dispatch_time"] if r["dispatch_time"] is not None else self.t) - r["arrival"],
             "ambulance": r["ambulance"],
             "hospital": r["hospital"],
+            "dispatch_time": r["dispatch_time"],
+            "pickup_time": r["pickup_time"],
             "hospital_arrival": r["hospital_arrival"],
             "on_time": r["on_time"],
         }

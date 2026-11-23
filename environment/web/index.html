@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MamaSafe Rwanda · 3D Referral Simulation</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script type="importmap">
+    { "imports": { "three": "/static/vendor/three.module.min.js", "three/addons/": "/static/vendor/" } }
+  </script>
+</head>
+<body>
+  <div id="scene"></div>
+
+  <header id="title-bar" class="panel">
+    <div class="brand">
+      <span class="logo">✚</span>
+      <div>
+        <h1>MamaSafe Rwanda</h1>
+        <p>RL ambulance dispatch · maternal referrals</p>
+      </div>
+    </div>
+    <div id="hud-chips">
+      <div class="chip"><span class="k">Agent</span><span id="chip-agent">—</span></div>
+      <div class="chip"><span class="k">Decision</span><span id="chip-step">0</span></div>
+      <div class="chip"><span class="k">Completed</span><span id="chip-done">0/50</span></div>
+      <div class="chip"><span class="k">On time</span><span id="chip-ontime">—</span></div>
+    </div>
+    <div id="clock-box">
+      <div id="clock">Day 1 00:00</div>
+      <div id="conditions">—</div>
+    </div>
+  </header>
+
+  <div id="action-hud" class="hidden">
+    <div class="k">Current action</div>
+    <div id="action-text"></div>
+    <div id="action-sub"></div>
+  </div>
+
+  <section id="left-col">
+    <div class="panel collapsible" id="controls">
+      <h2>Controls</h2>
+      <div class="body">
+        <div class="row">
+          <select id="mode" class="grow">
+            <option value="ai">AI evaluation</option>
+            <option value="manual">Manual</option>
+          </select>
+          <select id="scenario" class="grow"></select>
+        </div>
+        <div class="row"><select id="policy" class="grow"></select></div>
+        <div class="row">
+          <input id="seed" type="number" value="10000" title="Seed" />
+          <button id="reset" title="Reset">↺</button>
+          <button id="play">⏸ Pause</button>
+          <button id="step">Step ▶</button>
+        </div>
+        <div class="row">
+          <input id="speed" type="range" min="0" max="100" value="26" />
+          <span id="speed-label"></span>
+        </div>
+        <button id="analytics-btn" class="wide">📊 Training analytics</button>
+      </div>
+    </div>
+    <div class="panel collapsible" id="mission-panel">
+      <h2>Referrals</h2>
+      <div class="body">
+        <div id="mission-list" class="list"></div>
+        <h3>In transit</h3>
+        <div id="transit-list" class="list"></div>
+      </div>
+    </div>
+    <div class="panel collapsible collapsed" id="hospital-panel">
+      <h2>Hospitals</h2>
+      <div class="body"><div id="hospital-list"></div></div>
+    </div>
+    <div class="panel collapsible collapsed" id="legend-panel">
+      <h2>Legend</h2>
+      <div class="body" id="legend">
+        <span><i class="dot" style="background:#ff3b3b"></i>Critical</span>
+        <span><i class="dot" style="background:#ff9f1c"></i>Urgent</span>
+        <span><i class="dot" style="background:#ffd23f"></i>Moderate</span>
+        <span><i class="sq" style="background:#3b3e43"></i>Paved road</span>
+        <span><i class="sq" style="background:#a5552d"></i>Murram road</span>
+        <span><i class="sq" style="background:#87613f"></i>Rough road</span>
+        <span><i class="sq" style="background:#fff"></i>Available</span>
+        <span><i class="sq" style="background:#ff4d6d"></i>On referral</span>
+        <span><i class="sq" style="background:#ffd23f"></i>General duty</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="right-col">
+    <div class="panel collapsible" id="decision-panel">
+      <h2>AI decision</h2>
+      <div class="body">
+        <div id="agent-label" class="muted">—</div>
+        <div id="decision"></div>
+        <div id="manual-actions" class="hidden">
+          <h3>Choose an action</h3>
+          <div id="manual-buttons"></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel collapsible collapsed" id="stats-panel">
+      <h2>Statistics</h2>
+      <div class="body"><div id="stats" class="stats-grid"></div></div>
+    </div>
+    <div class="panel collapsible collapsed" id="log-panel">
+      <h2>Event log</h2>
+      <div class="body"><div id="log"></div></div>
+    </div>
+  </section>
+
+  <div id="follow-card" class="panel hidden">
+    <div class="speedo"><b id="follow-speed">0</b><span>km/h</span></div>
+    <div class="follow-text">
+      <div id="follow-title"></div>
+      <div id="follow-phase"></div>
+      <div id="follow-road" class="muted"></div>
+    </div>
+  </div>
+
+  <div id="camera-bar" class="panel">
+    <button data-view="overview" title="Key 1">Overview</button>
+    <button data-view="follow" title="Key 2">Follow</button>
+    <button data-view="top" title="Key 3">Top</button>
+    <span class="sep"></span>
+    <span id="follow-buttons"></span>
+    <span class="sep"></span>
+    <button id="toggle-panels" title="Key H">Hide panels</button>
+  </div>
+
+  <div id="reward-card" class="panel">
+    <div><div class="k">Step reward</div><div id="reward-step" class="big">+0.0</div></div>
+    <div><div class="k">Total reward</div><div id="reward-total" class="big">0.0</div></div>
+    <div><div class="k">Sim speed</div><div id="reward-speed" class="big">—</div></div>
+  </div>
+
+  <div id="banner" class="hidden"></div>
+
+  <div id="analytics" class="modal hidden">
+    <div class="modal-body panel">
+      <button id="analytics-close" class="close">✕</button>
+      <h2>Training analytics &amp; algorithm comparison</h2>
+      <div id="comparison"></div>
+      <div id="figures"></div>
+    </div>
+  </div>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

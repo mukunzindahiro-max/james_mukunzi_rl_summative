@@ -3,27 +3,27 @@
   "models": {
     "dqn": {
       "label": "DQN",
-      "experiment": "dqn_05_eps_0.999",
-      "path": "models/dqn/dqn_05_eps_0.999.pt",
-      "eval_return": 1712.159245113576
+      "experiment": "dqn_09_buffer_20k",
+      "path": "models/dqn/dqn_09_buffer_20k.pt",
+      "eval_return": 1744.873820836759
     },
     "reinforce": {
       "label": "REINFORCE",
       "experiment": "reinforce_12_batch_4_episodes",
       "path": "models/pg/reinforce_12_batch_4_episodes.pt",
-      "eval_return": 1263.249437872845
+      "eval_return": 1278.588761871842
     },
     "ppo": {
       "label": "PPO",
-      "experiment": "ppo_06_entropy_0",
-      "path": "models/pg/ppo_06_entropy_0.pt",
-      "eval_return": 1329.6493820542798
+      "experiment": "ppo_10_epochs_10",
+      "path": "models/pg/ppo_10_epochs_10.pt",
+      "eval_return": 1644.5748162878313
     },
     "a2c": {
       "label": "A2C",
       "experiment": "a2c_10_steps_5",
       "path": "models/pg/a2c_10_steps_5.pt",
-      "eval_return": 1546.5785612425384
+      "eval_return": 1660.0245892148257
     }
   }
 }

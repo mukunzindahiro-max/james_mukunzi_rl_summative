@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parent.parent
 MODELS_DIR = ROOT / "models"
 LOGS_DIR = ROOT / "logs"
 VALIDATION_SEEDS = list(range(5_000, 5_005))
-TRAIN_EPISODES = 400
-VALIDATE_EVERY = 25
+TRAIN_EPISODES = 2000
+VALIDATE_EVERY = 50
 REWARD_SCALE = 0.1
 TRANSITION_KEYS = [
     "observation",
