@@ -1,0 +1,29 @@
+[project]
+name = "james_mukunzi_rl_summative"
+version = "0.1.0"
+description = "Mission-based reinforcement learning for maternal emergency referral and ambulance dispatch (DQN, REINFORCE, PPO, A2C with TorchRL)."
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "torch==2.2.2",
+    "torchrl==0.3.1",
+    "tensordict==0.3.2",
+    "gymnasium>=0.29,<1.0",
+    "numpy>=1.26,<2.0",
+    "pandas>=2.1,<3.0",
+    "matplotlib>=3.8",
+    "plotly>=5.20",
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
