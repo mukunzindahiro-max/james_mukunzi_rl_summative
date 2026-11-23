@@ -1,0 +1,13 @@
+name,learning_rate,gamma,entropy_coef,hidden,normalize_returns,value_baseline,episodes_per_update,val_best,eval_return,eval_on_time,rainy_return,rainy_on_time,train_seconds
+reinforce_01_baseline,0.001,0.99,0.01,128x128,True,False,1,1068.1,1190.1,0.8411,1004.5,0.744,79.3
+reinforce_02_lr_3e-4,0.0003,0.99,0.01,128x128,True,False,1,1182.5,1217.3,0.8617,1146.1,0.7814,62.3
+reinforce_03_lr_3e-3,0.003,0.99,0.01,128x128,True,False,1,1165.1,1318.9,0.8818,1146.8,0.7882,84.5
+reinforce_04_gamma_0.95,0.001,0.95,0.01,128x128,True,False,1,1177.1,1198.5,0.8526,1096.3,0.7662,67.0
+reinforce_05_gamma_0.999,0.001,0.999,0.01,128x128,True,False,1,1120.7,1247.8,0.8352,1083.1,0.7544,69.1
+reinforce_06_entropy_0,0.001,0.99,0.0,128x128,True,False,1,1050.5,1176.3,0.837,992.8,0.742,97.1
+reinforce_07_entropy_0.05,0.001,0.99,0.05,128x128,True,False,1,1132.1,1276.8,0.8546,1102.6,0.7678,66.4
+reinforce_08_net_64,0.001,0.99,0.01,64x64,True,False,1,1168.0,1239.6,0.8292,1134.1,0.7459,61.7
+reinforce_09_net_256,0.001,0.99,0.01,256x256,True,False,1,1170.5,1246.9,0.8604,1163.6,0.7715,83.5
+reinforce_10_no_return_norm,0.001,0.99,0.01,128x128,False,False,1,140.8,238.0,0.7176,84.5,0.6293,153.3
+reinforce_11_value_baseline,0.001,0.99,0.01,128x128,True,True,1,1084.5,1206.6,0.8414,1018.8,0.7452,93.0
+reinforce_12_batch_4_episodes,0.001,0.99,0.01,128x128,True,False,4,1188.5,1263.2,0.873,1179.3,0.7943,64.8

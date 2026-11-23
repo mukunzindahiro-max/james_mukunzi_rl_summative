@@ -99,6 +99,12 @@ def run_many(train_fn, configs, workers):
         return pool.map(train_fn, configs)
 
 
+def _csv_value(value):
+    if isinstance(value, (list, tuple)):
+        return "x".join(str(v) for v in value)
+    return value
+
+
 def write_summary(algorithm, records, columns):
     lines = [",".join(["name", *columns, "val_best", "eval_return", "eval_on_time", "rainy_return", "rainy_on_time", "train_seconds"])]
     for r in records:
@@ -108,7 +114,7 @@ def write_summary(algorithm, records, columns):
                 str(v)
                 for v in [
                     r["name"],
-                    *[r["config"][c] for c in columns],
+                    *[_csv_value(r["config"][c]) for c in columns],
                     round(r["best_validation_return"], 1),
                     round(std["return_mean"], 1),
                     round(std["on_time_rate_mean"], 4),
