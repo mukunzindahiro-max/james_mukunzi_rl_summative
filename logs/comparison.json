@@ -73,15 +73,15 @@
   "algorithms": {
     "dqn": {
       "label": "DQN",
-      "best_experiment": "dqn_05_eps_0.999",
+      "best_experiment": "dqn_09_buffer_20k",
       "config": {
         "learning_rate": 0.0005,
         "gamma": 0.99,
         "epsilon_start": 1.0,
         "epsilon_min": 0.05,
-        "epsilon_decay": 0.999,
+        "epsilon_decay": 0.995,
         "batch_size": 64,
-        "buffer_size": 10000,
+        "buffer_size": 20000,
         "target_update": 250,
         "learning_starts": 1000,
         "hidden": [
@@ -92,40 +92,40 @@
         "grad_clip": 10.0,
         "seed": 1
       },
-      "best_validation_return": 1583.2979647323589,
-      "train_seconds": 222.4128782749176,
-      "total_steps": 29801,
+      "best_validation_return": 1622.7333093875372,
+      "train_seconds": 1401.2920861244202,
+      "total_steps": 139940,
       "evaluation": {
         "standard": {
-          "return_mean": 1712.159245113576,
-          "return_std": 108.3643503690451,
-          "on_time_rate": 0.9484226190476193,
+          "return_mean": 1744.873820836759,
+          "return_std": 91.81255212028798,
+          "on_time_rate": 0.9495476190476191,
           "unresolved": 0.35,
-          "mean_wait_minutes": 2.2273984700560314,
-          "mean_referral_minutes": 109.81359295517515,
-          "ambulance_utilization": 0.1732812377363096,
-          "total_km": 3425.045481802322,
+          "mean_wait_minutes": 1.4417129797220634,
+          "mean_referral_minutes": 106.54884549717698,
+          "ambulance_utilization": 0.17259343055003334,
+          "total_km": 3384.5499561272823,
           "invalid_actions": 0.0,
           "hospital_admissions": [
-            582,
-            230,
-            181
+            503,
+            341,
+            149
           ]
         },
         "rainy_season": {
-          "return_mean": 1679.6424621805618,
-          "return_std": 94.00478492449761,
-          "on_time_rate": 0.8962959183673469,
-          "unresolved": 0.3,
-          "mean_wait_minutes": 3.263359127284351,
-          "mean_referral_minutes": 130.24555482755062,
-          "ambulance_utilization": 0.23590221620245871,
-          "total_km": 3434.4907603506335,
+          "return_mean": 1701.91321279679,
+          "return_std": 92.0312085311857,
+          "on_time_rate": 0.9093401360544219,
+          "unresolved": 0.35,
+          "mean_wait_minutes": 2.348030504709103,
+          "mean_referral_minutes": 129.8046581682675,
+          "ambulance_utilization": 0.23620669201291838,
+          "total_km": 3545.7258544439596,
           "invalid_actions": 0.0,
           "hospital_admissions": [
-            568,
-            250,
-            176
+            500,
+            353,
+            140
           ]
         }
       },
@@ -136,16 +136,16 @@
           3
         ],
         "eval_returns": [
-          1712.159245113576,
-          1630.5380155179168,
-          1636.8082472320734
+          1744.873820836759,
+          1724.832039702182,
+          1696.2237669809842
         ],
-        "eval_return_mean": 1659.8351692878557,
-        "eval_return_std": 37.08715532093843,
+        "eval_return_mean": 1721.9765425066416,
+        "eval_return_std": 19.963672561559587,
         "on_time_rates": [
-          0.9484226190476193,
-          0.9374056122448982,
-          0.9385405205560486
+          0.9495476190476191,
+          0.9616105442176872,
+          0.9474413265306124
         ]
       }
     },
@@ -166,40 +166,40 @@
         "grad_clip": 1.0,
         "seed": 1
       },
-      "best_validation_return": 1188.52384421647,
-      "train_seconds": 64.81807780265808,
-      "total_steps": 27747,
+      "best_validation_return": 1217.3288117105142,
+      "train_seconds": 426.8221638202667,
+      "total_steps": 140918,
       "evaluation": {
         "standard": {
-          "return_mean": 1263.249437872845,
-          "return_std": 125.20883865829721,
-          "on_time_rate": 0.8730280612244897,
+          "return_mean": 1278.588761871842,
+          "return_std": 111.32624519816929,
+          "on_time_rate": 0.8569243197278912,
           "unresolved": 0.3,
-          "mean_wait_minutes": 2.5571432647587384,
-          "mean_referral_minutes": 136.76830128168973,
-          "ambulance_utilization": 0.18146012412876686,
-          "total_km": 4463.143725667972,
+          "mean_wait_minutes": 3.084823329868978,
+          "mean_referral_minutes": 139.25500049434365,
+          "ambulance_utilization": 0.18144342881710243,
+          "total_km": 4572.716080039385,
           "invalid_actions": 0.0,
           "hospital_admissions": [
-            433,
-            391,
-            170
+            387,
+            367,
+            240
           ]
         },
         "rainy_season": {
-          "return_mean": 1179.3151030558854,
-          "return_std": 125.74750988554888,
-          "on_time_rate": 0.7943069727891157,
+          "return_mean": 1202.1249623403658,
+          "return_std": 121.44607030281546,
+          "on_time_rate": 0.7924124149659864,
           "unresolved": 0.35,
-          "mean_wait_minutes": 3.3714941778355993,
-          "mean_referral_minutes": 161.45121772104292,
-          "ambulance_utilization": 0.24437941346213074,
-          "total_km": 4514.962944563398,
+          "mean_wait_minutes": 2.6338636884140474,
+          "mean_referral_minutes": 163.44153180813024,
+          "ambulance_utilization": 0.24525475867759425,
+          "total_km": 4694.710729553092,
           "invalid_actions": 0.0,
           "hospital_admissions": [
-            443,
-            372,
-            178
+            394,
+            352,
+            247
           ]
         }
       },
@@ -210,31 +210,31 @@
           3
         ],
         "eval_returns": [
-          1263.249437872845,
+          1278.588761871842,
           1027.190833079431,
-          1226.1079927666374
+          1223.663578199011
         ],
-        "eval_return_mean": 1172.1827545729711,
-        "eval_return_std": 103.6399688342164,
+        "eval_return_mean": 1176.4810577167611,
+        "eval_return_std": 107.91932891307273,
         "on_time_rates": [
-          0.8730280612244897,
+          0.8569243197278912,
           0.7925332513671519,
-          0.8314044905196122
+          0.8382916666666667
         ]
       }
     },
     "ppo": {
       "label": "PPO",
-      "best_experiment": "ppo_06_entropy_0",
+      "best_experiment": "ppo_10_epochs_10",
       "config": {
         "learning_rate": 0.0003,
         "gamma": 0.99,
         "gae_lambda": 0.95,
         "clip_epsilon": 0.2,
-        "entropy_coef": 0.0,
+        "entropy_coef": 0.01,
         "value_coef": 0.5,
         "rollout_steps": 1024,
-        "epochs": 4,
+        "epochs": 10,
         "minibatch_size": 128,
         "hidden": [
           128,
@@ -243,40 +243,40 @@
         "grad_clip": 0.5,
         "seed": 1
       },
-      "best_validation_return": 1286.7824684656346,
-      "train_seconds": 69.90929770469666,
-      "total_steps": 28424,
+      "best_validation_return": 1527.703594517144,
+      "train_seconds": 488.6602919101715,
+      "total_steps": 138893,
       "evaluation": {
         "standard": {
-          "return_mean": 1329.6493820542798,
-          "return_std": 131.29213195540876,
-          "on_time_rate": 0.884984693877551,
-          "unresolved": 0.3,
-          "mean_wait_minutes": 2.5246614459590146,
-          "mean_referral_minutes": 131.5838614021432,
-          "ambulance_utilization": 0.18067152446416393,
-          "total_km": 4380.188935016461,
+          "return_mean": 1644.5748162878313,
+          "return_std": 96.68101552875038,
+          "on_time_rate": 0.9483605442176872,
+          "unresolved": 0.4,
+          "mean_wait_minutes": 1.7882165862192416,
+          "mean_referral_minutes": 111.40327472030432,
+          "ambulance_utilization": 0.17373336567751463,
+          "total_km": 3408.7280002700672,
           "invalid_actions": 0.0,
           "hospital_admissions": [
-            496,
-            321,
-            177
+            410,
+            329,
+            253
           ]
         },
         "rainy_season": {
-          "return_mean": 1232.8946530785497,
-          "return_std": 160.65432967629351,
-          "on_time_rate": 0.8072636054421769,
+          "return_mean": 1605.3216077920806,
+          "return_std": 77.8985646850181,
+          "on_time_rate": 0.8941581632653062,
           "unresolved": 0.35,
-          "mean_wait_minutes": 4.055492724381178,
-          "mean_referral_minutes": 156.13038625932785,
-          "ambulance_utilization": 0.24326770271316986,
-          "total_km": 4416.714617326239,
+          "mean_wait_minutes": 2.9511803745446183,
+          "mean_referral_minutes": 134.64788254031572,
+          "ambulance_utilization": 0.2372339153454182,
+          "total_km": 3624.7345393023106,
           "invalid_actions": 0.0,
           "hospital_admissions": [
-            496,
-            320,
-            177
+            414,
+            331,
+            248
           ]
         }
       },
@@ -287,16 +287,16 @@
           3
         ],
         "eval_returns": [
-          1329.6493820542798,
-          1231.8512034828377,
-          1295.9039750207382
+          1644.5748162878313,
+          1606.5386328728678,
+          1628.0788192467776
         ],
-        "eval_return_mean": 1285.8015201859519,
-        "eval_return_std": 40.559960784330094,
+        "eval_return_mean": 1626.397422802492,
+        "eval_return_std": 15.573655804944611,
         "on_time_rates": [
-          0.884984693877551,
-          0.855843537414966,
-          0.8516045918367346
+          0.9483605442176872,
+          0.9354430272108845,
+          0.9444855442176872
         ]
       }
     },
@@ -318,40 +318,40 @@
         "grad_clip": 0.5,
         "seed": 1
       },
-      "best_validation_return": 1435.0590732539938,
-      "train_seconds": 117.85854196548462,
-      "total_steps": 28708,
+      "best_validation_return": 1522.7225949085325,
+      "train_seconds": 642.5375051498413,
+      "total_steps": 142887,
       "evaluation": {
         "standard": {
-          "return_mean": 1546.5785612425384,
-          "return_std": 139.97614628133718,
-          "on_time_rate": 0.9182666811405416,
-          "unresolved": 0.5,
-          "mean_wait_minutes": 3.1334370485298964,
-          "mean_referral_minutes": 121.4763035276192,
-          "ambulance_utilization": 0.17692657755137015,
-          "total_km": 3984.269131658189,
+          "return_mean": 1660.0245892148257,
+          "return_std": 99.40337062871065,
+          "on_time_rate": 0.9445068027210886,
+          "unresolved": 0.35,
+          "mean_wait_minutes": 1.7037329372773304,
+          "mean_referral_minutes": 112.46557151579267,
+          "ambulance_utilization": 0.17480892376508395,
+          "total_km": 3610.1773036619015,
           "invalid_actions": 0.0,
           "hospital_admissions": [
-            408,
-            210,
-            372
+            487,
+            282,
+            224
           ]
         },
         "rainy_season": {
-          "return_mean": 1449.705142751401,
-          "return_std": 135.91130010772255,
-          "on_time_rate": 0.8445378853669128,
-          "unresolved": 0.45,
-          "mean_wait_minutes": 3.668102108164134,
-          "mean_referral_minutes": 144.9457214534553,
-          "ambulance_utilization": 0.2393963347907675,
-          "total_km": 3976.659463021579,
+          "return_mean": 1565.7189583370337,
+          "return_std": 89.74575395703684,
+          "on_time_rate": 0.891076530612245,
+          "unresolved": 0.4,
+          "mean_wait_minutes": 1.4367742588854733,
+          "mean_referral_minutes": 135.6528158300257,
+          "ambulance_utilization": 0.23786090412850824,
+          "total_km": 3749.0097883647422,
           "invalid_actions": 0.0,
           "hospital_admissions": [
-            424,
-            217,
-            350
+            468,
+            297,
+            227
           ]
         }
       },
@@ -362,16 +362,16 @@
           3
         ],
         "eval_returns": [
-          1546.5785612425384,
-          1437.095503852308,
-          1508.0211424220583
+          1660.0245892148257,
+          1614.127001622785,
+          1651.0657900626543
         ],
-        "eval_return_mean": 1497.2317358389682,
-        "eval_return_std": 45.3427203616306,
+        "eval_return_mean": 1641.739126966755,
+        "eval_return_std": 19.864325142837856,
         "on_time_rates": [
-          0.9182666811405416,
-          0.8839489795918368,
-          0.9162823129251703
+          0.9445068027210886,
+          0.9304022108843537,
+          0.9392796533507021
         ]
       }
     }
