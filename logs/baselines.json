@@ -1,0 +1,1750 @@
+{
+  "random": {
+    "standard": {
+      "scenario": "standard",
+      "seeds": [
+        10000,
+        10001,
+        10002,
+        10003,
+        10004,
+        10005,
+        10006,
+        10007,
+        10008,
+        10009,
+        10010,
+        10011,
+        10012,
+        10013,
+        10014,
+        10015,
+        10016,
+        10017,
+        10018,
+        10019
+      ],
+      "summary": {
+        "return_mean": 1196.0371391310766,
+        "return_std": 159.40690784578317,
+        "length_mean": 70.5,
+        "length_std": 15.973415414368963,
+        "completed_mean": 49.35,
+        "completed_std": 0.9096702699330126,
+        "completed_on_time_mean": 41.7,
+        "completed_on_time_std": 3.2109188716004646,
+        "on_time_rate_mean": 0.8445853415834419,
+        "on_time_rate_std": 0.057568914870101504,
+        "unresolved_mean": 0.65,
+        "unresolved_std": 0.9096702699330126,
+        "mean_wait_minutes_mean": 5.881895504119163,
+        "mean_wait_minutes_std": 4.768874464275206,
+        "mean_referral_minutes_mean": 145.68344468259278,
+        "mean_referral_minutes_std": 11.67726849645365,
+        "ambulance_utilization_mean": 0.18057332314415722,
+        "ambulance_utilization_std": 0.007665495111497011,
+        "total_km_mean": 4567.972579783667,
+        "total_km_std": 171.3494307088549,
+        "invalid_actions_mean": 0.0,
+        "invalid_actions_std": 0.0,
+        "hospital_admissions": [
+          378,
+          209,
+          400
+        ]
+      },
+      "episodes": [
+        {
+          "seed": 10000,
+          "return": 1285.857567720026,
+          "length": 59,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 44,
+          "on_time_rate": 0.88,
+          "unresolved": 0,
+          "mean_wait_minutes": 4.303177521744292,
+          "mean_referral_minutes": 143.3562927759836,
+          "ambulance_utilization": 0.17386712796667142,
+          "total_km": 4316.220830017365,
+          "hospital_admissions": [
+            22,
+            10,
+            18
+          ]
+        },
+        {
+          "seed": 10001,
+          "return": 1175.9041963983755,
+          "length": 58,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 36,
+          "on_time_rate": 0.72,
+          "unresolved": 0,
+          "mean_wait_minutes": 3.9521338479009867,
+          "mean_referral_minutes": 153.01064244624365,
+          "ambulance_utilization": 0.17857208634195962,
+          "total_km": 4650.067191254213,
+          "hospital_admissions": [
+            24,
+            11,
+            15
+          ]
+        },
+        {
+          "seed": 10002,
+          "return": 1019.2248897999253,
+          "length": 87,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 39,
+          "on_time_rate": 0.7959183673469388,
+          "unresolved": 1,
+          "mean_wait_minutes": 8.029463109316701,
+          "mean_referral_minutes": 163.7902535820829,
+          "ambulance_utilization": 0.17557052663095413,
+          "total_km": 4675.274669527899,
+          "hospital_admissions": [
+            16,
+            9,
+            24
+          ]
+        },
+        {
+          "seed": 10003,
+          "return": 1341.341533564067,
+          "length": 58,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 45,
+          "on_time_rate": 0.9,
+          "unresolved": 0,
+          "mean_wait_minutes": 3.3088421693477996,
+          "mean_referral_minutes": 141.42637770277258,
+          "ambulance_utilization": 0.19364837477972335,
+          "total_km": 4621.653019143176,
+          "hospital_admissions": [
+            14,
+            15,
+            21
+          ]
+        },
+        {
+          "seed": 10004,
+          "return": 1303.081250196177,
+          "length": 66,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 43,
+          "on_time_rate": 0.86,
+          "unresolved": 0,
+          "mean_wait_minutes": 6.965632919569179,
+          "mean_referral_minutes": 137.99479765393923,
+          "ambulance_utilization": 0.18023114427317188,
+          "total_km": 4488.44915669489,
+          "hospital_admissions": [
+            18,
+            12,
+            20
+          ]
+        },
+        {
+          "seed": 10005,
+          "return": 880.3402644588374,
+          "length": 104,
+          "invalid_actions": 0,
+          "completed": 47,
+          "completed_on_time": 37,
+          "on_time_rate": 0.7872340425531915,
+          "unresolved": 3,
+          "mean_wait_minutes": 12.873360854601453,
+          "mean_referral_minutes": 160.4342281082276,
+          "ambulance_utilization": 0.17952349153912503,
+          "total_km": 4395.181811362461,
+          "hospital_admissions": [
+            18,
+            10,
+            19
+          ]
+        },
+        {
+          "seed": 10006,
+          "return": 1393.0434873244385,
+          "length": 56,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 47,
+          "on_time_rate": 0.94,
+          "unresolved": 0,
+          "mean_wait_minutes": 2.143559680976614,
+          "mean_referral_minutes": 129.4186342415677,
+          "ambulance_utilization": 0.18797771077491715,
+          "total_km": 4687.192047319581,
+          "hospital_admissions": [
+            13,
+            12,
+            25
+          ]
+        },
+        {
+          "seed": 10007,
+          "return": 1127.11343752198,
+          "length": 80,
+          "invalid_actions": 0,
+          "completed": 48,
+          "completed_on_time": 42,
+          "on_time_rate": 0.875,
+          "unresolved": 2,
+          "mean_wait_minutes": 3.949139100479518,
+          "mean_referral_minutes": 130.20833001910907,
+          "ambulance_utilization": 0.17502787925732924,
+          "total_km": 4427.02566015071,
+          "hospital_admissions": [
+            19,
+            6,
+            23
+          ]
+        },
+        {
+          "seed": 10008,
+          "return": 1092.0765486288083,
+          "length": 80,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 41,
+          "on_time_rate": 0.8367346938775511,
+          "unresolved": 1,
+          "mean_wait_minutes": 3.6787360117008534,
+          "mean_referral_minutes": 148.1871104416508,
+          "ambulance_utilization": 0.18798214757569232,
+          "total_km": 4863.820012119855,
+          "hospital_admissions": [
+            22,
+            5,
+            22
+          ]
+        },
+        {
+          "seed": 10009,
+          "return": 1298.2883198065315,
+          "length": 55,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 42,
+          "on_time_rate": 0.84,
+          "unresolved": 0,
+          "mean_wait_minutes": 1.8106162007779494,
+          "mean_referral_minutes": 150.20572991078254,
+          "ambulance_utilization": 0.194426188242222,
+          "total_km": 4929.312231048635,
+          "hospital_admissions": [
+            17,
+            8,
+            25
+          ]
+        },
+        {
+          "seed": 10010,
+          "return": 1348.6916948700384,
+          "length": 54,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 44,
+          "on_time_rate": 0.88,
+          "unresolved": 0,
+          "mean_wait_minutes": 1.2386658410698146,
+          "mean_referral_minutes": 128.62516296801462,
+          "ambulance_utilization": 0.1745326690175985,
+          "total_km": 4310.027369468266,
+          "hospital_admissions": [
+            20,
+            13,
+            17
+          ]
+        },
+        {
+          "seed": 10011,
+          "return": 1012.4999999999998,
+          "length": 81,
+          "invalid_actions": 0,
+          "completed": 48,
+          "completed_on_time": 38,
+          "on_time_rate": 0.7916666666666666,
+          "unresolved": 2,
+          "mean_wait_minutes": 2.5,
+          "mean_referral_minutes": 151.19572713278743,
+          "ambulance_utilization": 0.18585795499937716,
+          "total_km": 4468.925610685917,
+          "hospital_admissions": [
+            24,
+            11,
+            13
+          ]
+        },
+        {
+          "seed": 10012,
+          "return": 997.7523192584363,
+          "length": 96,
+          "invalid_actions": 0,
+          "completed": 48,
+          "completed_on_time": 39,
+          "on_time_rate": 0.8125,
+          "unresolved": 2,
+          "mean_wait_minutes": 11.536049272632681,
+          "mean_referral_minutes": 149.29080772839552,
+          "ambulance_utilization": 0.1653530460330243,
+          "total_km": 4463.4728824368185,
+          "hospital_admissions": [
+            15,
+            8,
+            25
+          ]
+        },
+        {
+          "seed": 10013,
+          "return": 1183.1604658938031,
+          "length": 76,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 44,
+          "on_time_rate": 0.8979591836734694,
+          "unresolved": 1,
+          "mean_wait_minutes": 11.921112801983847,
+          "mean_referral_minutes": 151.27448129824484,
+          "ambulance_utilization": 0.17751735160344823,
+          "total_km": 4686.349916515407,
+          "hospital_admissions": [
+            19,
+            10,
+            20
+          ]
+        },
+        {
+          "seed": 10014,
+          "return": 1380.6897959819316,
+          "length": 61,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 45,
+          "on_time_rate": 0.9,
+          "unresolved": 0,
+          "mean_wait_minutes": 3.6608290121725395,
+          "mean_referral_minutes": 134.48017581869806,
+          "ambulance_utilization": 0.17339966694792924,
+          "total_km": 4545.839700899406,
+          "hospital_admissions": [
+            18,
+            11,
+            21
+          ]
+        },
+        {
+          "seed": 10015,
+          "return": 1393.0307076129482,
+          "length": 64,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 45,
+          "on_time_rate": 0.9,
+          "unresolved": 0,
+          "mean_wait_minutes": 6.309730280523144,
+          "mean_referral_minutes": 133.6479887271591,
+          "ambulance_utilization": 0.1842947710393191,
+          "total_km": 4397.9436422743265,
+          "hospital_admissions": [
+            24,
+            10,
+            16
+          ]
+        },
+        {
+          "seed": 10016,
+          "return": 922.6373746771277,
+          "length": 101,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 36,
+          "on_time_rate": 0.7346938775510204,
+          "unresolved": 1,
+          "mean_wait_minutes": 20.53597004667898,
+          "mean_referral_minutes": 174.40352052241224,
+          "ambulance_utilization": 0.17628654646950218,
+          "total_km": 4754.216509880827,
+          "hospital_admissions": [
+            16,
+            13,
+            20
+          ]
+        },
+        {
+          "seed": 10017,
+          "return": 1282.148097881473,
+          "length": 55,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 41,
+          "on_time_rate": 0.82,
+          "unresolved": 0,
+          "mean_wait_minutes": 2.7229214793453322,
+          "mean_referral_minutes": 149.11793987636455,
+          "ambulance_utilization": 0.17785471815022347,
+          "total_km": 4737.264281829438,
+          "hospital_admissions": [
+            19,
+            11,
+            20
+          ]
+        },
+        {
+          "seed": 10018,
+          "return": 1153.4310924519093,
+          "length": 58,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 41,
+          "on_time_rate": 0.82,
+          "unresolved": 0,
+          "mean_wait_minutes": 2.252075572038491,
+          "mean_referral_minutes": 144.23365614172585,
+          "ambulance_utilization": 0.1938518488153047,
+          "total_km": 4496.696386665236,
+          "hospital_admissions": [
+            19,
+            13,
+            18
+          ]
+        },
+        {
+          "seed": 10019,
+          "return": 1330.4297385746966,
+          "length": 61,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 45,
+          "on_time_rate": 0.9,
+          "unresolved": 0,
+          "mean_wait_minutes": 3.9458943595230767,
+          "mean_referral_minutes": 139.36703655569363,
+          "ambulance_utilization": 0.17569121242565194,
+          "total_km": 4444.5186663788845,
+          "hospital_admissions": [
+            21,
+            11,
+            18
+          ]
+        }
+      ]
+    },
+    "rainy_season": {
+      "scenario": "rainy_season",
+      "seeds": [
+        10000,
+        10001,
+        10002,
+        10003,
+        10004,
+        10005,
+        10006,
+        10007,
+        10008,
+        10009,
+        10010,
+        10011,
+        10012,
+        10013,
+        10014,
+        10015,
+        10016,
+        10017,
+        10018,
+        10019
+      ],
+      "summary": {
+        "return_mean": 1085.6986155341597,
+        "return_std": 154.4304711037333,
+        "length_mean": 73.3,
+        "length_std": 14.018202452525788,
+        "completed_mean": 49.5,
+        "completed_std": 0.8660254037844386,
+        "completed_on_time_mean": 37.4,
+        "completed_on_time_std": 3.1527765540868895,
+        "on_time_rate_mean": 0.7555063685048488,
+        "on_time_rate_std": 0.061820552295367676,
+        "unresolved_mean": 0.5,
+        "unresolved_std": 0.8660254037844386,
+        "mean_wait_minutes_mean": 8.217780303078676,
+        "mean_wait_minutes_std": 9.689087835315817,
+        "mean_referral_minutes_mean": 176.28388152482023,
+        "mean_referral_minutes_std": 12.836956373436559,
+        "ambulance_utilization_mean": 0.2462800633986142,
+        "ambulance_utilization_std": 0.011800933713941976,
+        "total_km_mean": 4846.194337380739,
+        "total_km_std": 238.76950906256394,
+        "invalid_actions_mean": 0.0,
+        "invalid_actions_std": 0.0,
+        "hospital_admissions": [
+          347,
+          226,
+          417
+        ]
+      },
+      "episodes": [
+        {
+          "seed": 10000,
+          "return": 1065.3708383867252,
+          "length": 60,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 39,
+          "on_time_rate": 0.78,
+          "unresolved": 0,
+          "mean_wait_minutes": 4.329161613274773,
+          "mean_referral_minutes": 178.16759424486133,
+          "ambulance_utilization": 0.23078940532538048,
+          "total_km": 5076.766156103203,
+          "hospital_admissions": [
+            17,
+            12,
+            21
+          ]
+        },
+        {
+          "seed": 10001,
+          "return": 1076.780771794904,
+          "length": 60,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 34,
+          "on_time_rate": 0.68,
+          "unresolved": 0,
+          "mean_wait_minutes": 2.5781104048771706,
+          "mean_referral_minutes": 167.66819216244315,
+          "ambulance_utilization": 0.24247618712963914,
+          "total_km": 4505.865952922438,
+          "hospital_admissions": [
+            19,
+            13,
+            18
+          ]
+        },
+        {
+          "seed": 10002,
+          "return": 1068.6202593918886,
+          "length": 85,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 38,
+          "on_time_rate": 0.7755102040816326,
+          "unresolved": 1,
+          "mean_wait_minutes": 8.663263158279468,
+          "mean_referral_minutes": 177.07061609626737,
+          "ambulance_utilization": 0.24157507085394272,
+          "total_km": 4728.72178914896,
+          "hospital_admissions": [
+            18,
+            11,
+            20
+          ]
+        },
+        {
+          "seed": 10003,
+          "return": 1050.7744183515065,
+          "length": 60,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 36,
+          "on_time_rate": 0.72,
+          "unresolved": 0,
+          "mean_wait_minutes": 3.8494613834147278,
+          "mean_referral_minutes": 173.97137196846322,
+          "ambulance_utilization": 0.257551135824931,
+          "total_km": 4774.909189195425,
+          "hospital_admissions": [
+            14,
+            14,
+            22
+          ]
+        },
+        {
+          "seed": 10004,
+          "return": 726.5945553523745,
+          "length": 105,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 30,
+          "on_time_rate": 0.6122448979591837,
+          "unresolved": 1,
+          "mean_wait_minutes": 47.74881961103369,
+          "mean_referral_minutes": 223.65585463272316,
+          "ambulance_utilization": 0.24215130836476606,
+          "total_km": 4865.483975839171,
+          "hospital_admissions": [
+            15,
+            12,
+            22
+          ]
+        },
+        {
+          "seed": 10005,
+          "return": 978.0393230762853,
+          "length": 90,
+          "invalid_actions": 0,
+          "completed": 47,
+          "completed_on_time": 39,
+          "on_time_rate": 0.8297872340425532,
+          "unresolved": 3,
+          "mean_wait_minutes": 4.75726913368875,
+          "mean_referral_minutes": 170.81375510078004,
+          "ambulance_utilization": 0.2471097664521889,
+          "total_km": 4599.643143432757,
+          "hospital_admissions": [
+            19,
+            8,
+            20
+          ]
+        },
+        {
+          "seed": 10006,
+          "return": 1326.9076274010458,
+          "length": 59,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 42,
+          "on_time_rate": 0.84,
+          "unresolved": 0,
+          "mean_wait_minutes": 2.7105667425444517,
+          "mean_referral_minutes": 167.49451565383487,
+          "ambulance_utilization": 0.24140787400453675,
+          "total_km": 5065.11400902949,
+          "hospital_admissions": [
+            19,
+            9,
+            22
+          ]
+        },
+        {
+          "seed": 10007,
+          "return": 1047.1945604105624,
+          "length": 83,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 39,
+          "on_time_rate": 0.7959183673469388,
+          "unresolved": 1,
+          "mean_wait_minutes": 10.495129894249036,
+          "mean_referral_minutes": 176.44897974031943,
+          "ambulance_utilization": 0.2349492595847821,
+          "total_km": 4635.93059690835,
+          "hospital_admissions": [
+            15,
+            13,
+            21
+          ]
+        },
+        {
+          "seed": 10008,
+          "return": 1020.6334814412572,
+          "length": 67,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 33,
+          "on_time_rate": 0.66,
+          "unresolved": 0,
+          "mean_wait_minutes": 4.7890557449771105,
+          "mean_referral_minutes": 183.60819343377497,
+          "ambulance_utilization": 0.24359492569355118,
+          "total_km": 5259.104011784688,
+          "hospital_admissions": [
+            17,
+            7,
+            26
+          ]
+        },
+        {
+          "seed": 10009,
+          "return": 1202.7411115720167,
+          "length": 57,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 39,
+          "on_time_rate": 0.78,
+          "unresolved": 0,
+          "mean_wait_minutes": 2.1177768559669494,
+          "mean_referral_minutes": 170.69492230254244,
+          "ambulance_utilization": 0.26513795913592114,
+          "total_km": 4868.210996452239,
+          "hospital_admissions": [
+            19,
+            13,
+            18
+          ]
+        },
+        {
+          "seed": 10010,
+          "return": 1232.440391575235,
+          "length": 57,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 39,
+          "on_time_rate": 0.78,
+          "unresolved": 0,
+          "mean_wait_minutes": 2.1899691358733615,
+          "mean_referral_minutes": 156.6016920245953,
+          "ambulance_utilization": 0.24067795720869428,
+          "total_km": 4843.0456949120535,
+          "hospital_admissions": [
+            17,
+            12,
+            21
+          ]
+        },
+        {
+          "seed": 10011,
+          "return": 879.9503596516647,
+          "length": 93,
+          "invalid_actions": 0,
+          "completed": 48,
+          "completed_on_time": 35,
+          "on_time_rate": 0.7291666666666666,
+          "unresolved": 2,
+          "mean_wait_minutes": 5.516479502690515,
+          "mean_referral_minutes": 179.4754074068688,
+          "ambulance_utilization": 0.2584793908474986,
+          "total_km": 4829.762485612839,
+          "hospital_admissions": [
+            16,
+            10,
+            22
+          ]
+        },
+        {
+          "seed": 10012,
+          "return": 853.5501766660052,
+          "length": 82,
+          "invalid_actions": 0,
+          "completed": 48,
+          "completed_on_time": 33,
+          "on_time_rate": 0.6875,
+          "unresolved": 2,
+          "mean_wait_minutes": 2.6952264911467787,
+          "mean_referral_minutes": 167.95803444648723,
+          "ambulance_utilization": 0.23287750015130743,
+          "total_km": 4912.973368687718,
+          "hospital_admissions": [
+            13,
+            12,
+            23
+          ]
+        },
+        {
+          "seed": 10013,
+          "return": 1220.6625441840044,
+          "length": 60,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 42,
+          "on_time_rate": 0.84,
+          "unresolved": 0,
+          "mean_wait_minutes": 4.663797420281153,
+          "mean_referral_minutes": 176.03217593200748,
+          "ambulance_utilization": 0.25717157131816576,
+          "total_km": 5029.955467677718,
+          "hospital_admissions": [
+            16,
+            12,
+            22
+          ]
+        },
+        {
+          "seed": 10014,
+          "return": 1112.8707113091389,
+          "length": 69,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 38,
+          "on_time_rate": 0.76,
+          "unresolved": 0,
+          "mean_wait_minutes": 7.691041112875014,
+          "mean_referral_minutes": 175.88669036293825,
+          "ambulance_utilization": 0.25044133671468405,
+          "total_km": 4893.581742923962,
+          "hospital_admissions": [
+            20,
+            12,
+            18
+          ]
+        },
+        {
+          "seed": 10015,
+          "return": 1100.6906817201734,
+          "length": 83,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 37,
+          "on_time_rate": 0.74,
+          "unresolved": 0,
+          "mean_wait_minutes": 12.855191468777612,
+          "mean_referral_minutes": 169.7587219453691,
+          "ambulance_utilization": 0.2415180237147981,
+          "total_km": 4984.630875080647,
+          "hospital_admissions": [
+            20,
+            9,
+            21
+          ]
+        },
+        {
+          "seed": 10016,
+          "return": 1350.708462318594,
+          "length": 70,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 42,
+          "on_time_rate": 0.84,
+          "unresolved": 0,
+          "mean_wait_minutes": 6.831421172634037,
+          "mean_referral_minutes": 174.17240927981197,
+          "ambulance_utilization": 0.2615497107270035,
+          "total_km": 4718.682673413029,
+          "hospital_admissions": [
+            23,
+            12,
+            15
+          ]
+        },
+        {
+          "seed": 10017,
+          "return": 1296.7388217720934,
+          "length": 86,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 40,
+          "on_time_rate": 0.8,
+          "unresolved": 0,
+          "mean_wait_minutes": 13.564124517327546,
+          "mean_referral_minutes": 168.8673091315755,
+          "ambulance_utilization": 0.24913258479468864,
+          "total_km": 4340.964260078165,
+          "hospital_admissions": [
+            20,
+            14,
+            16
+          ]
+        },
+        {
+          "seed": 10018,
+          "return": 1014.1769138232027,
+          "length": 61,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 36,
+          "on_time_rate": 0.72,
+          "unresolved": 0,
+          "mean_wait_minutes": 5.591359727625677,
+          "mean_referral_minutes": 190.65413146779196,
+          "ambulance_utilization": 0.2666761753958639,
+          "total_km": 5350.370464823221,
+          "hospital_admissions": [
+            14,
+            9,
+            27
+          ]
+        },
+        {
+          "seed": 10019,
+          "return": 1088.5263004845197,
+          "length": 79,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 37,
+          "on_time_rate": 0.74,
+          "unresolved": 0,
+          "mean_wait_minutes": 10.718380970035723,
+          "mean_referral_minutes": 176.67706316294928,
+          "ambulance_utilization": 0.22033412472994068,
+          "total_km": 4640.169893588704,
+          "hospital_admissions": [
+            16,
+            12,
+            22
+          ]
+        }
+      ]
+    }
+  },
+  "nearest": {
+    "standard": {
+      "scenario": "standard",
+      "seeds": [
+        10000,
+        10001,
+        10002,
+        10003,
+        10004,
+        10005,
+        10006,
+        10007,
+        10008,
+        10009,
+        10010,
+        10011,
+        10012,
+        10013,
+        10014,
+        10015,
+        10016,
+        10017,
+        10018,
+        10019
+      ],
+      "summary": {
+        "return_mean": 1770.3302772099614,
+        "return_std": 87.73461143740852,
+        "length_mean": 56.85,
+        "length_std": 9.344918405208256,
+        "completed_mean": 49.65,
+        "completed_std": 0.6538348415311009,
+        "completed_on_time_mean": 47.95,
+        "completed_on_time_std": 1.9358460682605938,
+        "on_time_rate_mean": 0.9656913265306123,
+        "on_time_rate_std": 0.03500332528968245,
+        "unresolved_mean": 0.35,
+        "unresolved_std": 0.653834841531101,
+        "mean_wait_minutes_mean": 1.3097544126696161,
+        "mean_wait_minutes_std": 2.4687037841914163,
+        "mean_referral_minutes_mean": 97.61088298137312,
+        "mean_referral_minutes_std": 5.99222172921044,
+        "ambulance_utilization_mean": 0.17042665182355649,
+        "ambulance_utilization_std": 0.008604557105452191,
+        "total_km_mean": 2946.2035930531915,
+        "total_km_std": 187.7854112179948,
+        "invalid_actions_mean": 0.0,
+        "invalid_actions_std": 0.0,
+        "hospital_admissions": [
+          571,
+          268,
+          154
+        ]
+      },
+      "episodes": [
+        {
+          "seed": 10000,
+          "return": 1790.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 49,
+          "on_time_rate": 0.98,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 92.69074806078775,
+          "ambulance_utilization": 0.16338168845097778,
+          "total_km": 2595.7129886728994,
+          "hospital_admissions": [
+            33,
+            13,
+            4
+          ]
+        },
+        {
+          "seed": 10001,
+          "return": 1725.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 43,
+          "on_time_rate": 0.86,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 103.40435916284905,
+          "ambulance_utilization": 0.16865727527112043,
+          "total_km": 2988.678779151384,
+          "hospital_admissions": [
+            26,
+            16,
+            8
+          ]
+        },
+        {
+          "seed": 10002,
+          "return": 1723.1094751006158,
+          "length": 72,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 48,
+          "on_time_rate": 0.9795918367346939,
+          "unresolved": 1,
+          "mean_wait_minutes": 2.6211841593609946,
+          "mean_referral_minutes": 98.56518484453669,
+          "ambulance_utilization": 0.15913214002445378,
+          "total_km": 2677.7510036272215,
+          "hospital_admissions": [
+            29,
+            16,
+            4
+          ]
+        },
+        {
+          "seed": 10003,
+          "return": 1840.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 49,
+          "on_time_rate": 0.98,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 98.96315243450019,
+          "ambulance_utilization": 0.18159840093363747,
+          "total_km": 2663.5992620173324,
+          "hospital_admissions": [
+            28,
+            17,
+            5
+          ]
+        },
+        {
+          "seed": 10004,
+          "return": 1849.2610491915636,
+          "length": 53,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 50,
+          "on_time_rate": 1.0,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.7340473021280195,
+          "mean_referral_minutes": 89.72111962127845,
+          "ambulance_utilization": 0.17291608817211288,
+          "total_km": 2967.473946022265,
+          "hospital_admissions": [
+            29,
+            12,
+            9
+          ]
+        },
+        {
+          "seed": 10005,
+          "return": 1790.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 48,
+          "on_time_rate": 0.96,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 98.75263748982877,
+          "ambulance_utilization": 0.17045084632580298,
+          "total_km": 2971.6912040714055,
+          "hospital_admissions": [
+            32,
+            12,
+            6
+          ]
+        },
+        {
+          "seed": 10006,
+          "return": 1839.8230353752758,
+          "length": 51,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 50,
+          "on_time_rate": 1.0,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.3539292494485562,
+          "mean_referral_minutes": 89.33849255742837,
+          "ambulance_utilization": 0.17900042836595914,
+          "total_km": 3156.031401704861,
+          "hospital_admissions": [
+            32,
+            10,
+            8
+          ]
+        },
+        {
+          "seed": 10007,
+          "return": 1815.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 49,
+          "on_time_rate": 0.98,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 95.13499596494584,
+          "ambulance_utilization": 0.1697532118312827,
+          "total_km": 3421.175026111459,
+          "hospital_admissions": [
+            26,
+            9,
+            15
+          ]
+        },
+        {
+          "seed": 10008,
+          "return": 1790.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 48,
+          "on_time_rate": 0.96,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 100.52132219764546,
+          "ambulance_utilization": 0.1811396201731757,
+          "total_km": 3218.4019983825206,
+          "hospital_admissions": [
+            28,
+            10,
+            12
+          ]
+        },
+        {
+          "seed": 10009,
+          "return": 1819.612416141654,
+          "length": 51,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 49,
+          "on_time_rate": 0.98,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.2583892388973254,
+          "mean_referral_minutes": 99.02657647402995,
+          "ambulance_utilization": 0.18567693589253584,
+          "total_km": 2974.0073715672906,
+          "hospital_admissions": [
+            28,
+            16,
+            6
+          ]
+        },
+        {
+          "seed": 10010,
+          "return": 1800.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 48,
+          "on_time_rate": 0.96,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 90.83165379347,
+          "ambulance_utilization": 0.1662404482425982,
+          "total_km": 2899.4336502805827,
+          "hospital_admissions": [
+            25,
+            18,
+            7
+          ]
+        },
+        {
+          "seed": 10011,
+          "return": 1610.7999999999993,
+          "length": 76,
+          "invalid_actions": 0,
+          "completed": 48,
+          "completed_on_time": 47,
+          "on_time_rate": 0.9791666666666666,
+          "unresolved": 2,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 99.95125009027902,
+          "ambulance_utilization": 0.1761558014541225,
+          "total_km": 2867.5084471805385,
+          "hospital_admissions": [
+            30,
+            13,
+            5
+          ]
+        },
+        {
+          "seed": 10012,
+          "return": 1576.0,
+          "length": 72,
+          "invalid_actions": 0,
+          "completed": 48,
+          "completed_on_time": 46,
+          "on_time_rate": 0.9583333333333334,
+          "unresolved": 2,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 95.95549923499978,
+          "ambulance_utilization": 0.15500883082482347,
+          "total_km": 2935.5687825581763,
+          "hospital_admissions": [
+            28,
+            10,
+            10
+          ]
+        },
+        {
+          "seed": 10013,
+          "return": 1696.0219063208856,
+          "length": 69,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 47,
+          "on_time_rate": 0.9591836734693877,
+          "unresolved": 1,
+          "mean_wait_minutes": 8.934885059416827,
+          "mean_referral_minutes": 103.26832977771754,
+          "ambulance_utilization": 0.16201520267004837,
+          "total_km": 2865.7446520823432,
+          "hospital_admissions": [
+            25,
+            16,
+            8
+          ]
+        },
+        {
+          "seed": 10014,
+          "return": 1833.4439811586076,
+          "length": 55,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 49,
+          "on_time_rate": 0.98,
+          "unresolved": 0,
+          "mean_wait_minutes": 1.2300763650230693,
+          "mean_referral_minutes": 91.91096477205892,
+          "ambulance_utilization": 0.16282083460780672,
+          "total_km": 2818.582163059522,
+          "hospital_admissions": [
+            29,
+            14,
+            7
+          ]
+        },
+        {
+          "seed": 10015,
+          "return": 1839.8529317829689,
+          "length": 51,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 49,
+          "on_time_rate": 0.98,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.14706821703097375,
+          "mean_referral_minutes": 97.30505661250072,
+          "ambulance_utilization": 0.17606196552150696,
+          "total_km": 2962.7554486433537,
+          "hospital_admissions": [
+            28,
+            13,
+            9
+          ]
+        },
+        {
+          "seed": 10016,
+          "return": 1581.6605615506064,
+          "length": 74,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 43,
+          "on_time_rate": 0.8775510204081632,
+          "unresolved": 1,
+          "mean_wait_minutes": 7.631507039577665,
+          "mean_referral_minutes": 116.51127401953971,
+          "ambulance_utilization": 0.16430630773925087,
+          "total_km": 3139.16810013667,
+          "hospital_admissions": [
+            25,
+            15,
+            9
+          ]
+        },
+        {
+          "seed": 10017,
+          "return": 1804.0403251572375,
+          "length": 53,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 48,
+          "on_time_rate": 0.96,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.8614366288355267,
+          "mean_referral_minutes": 101.29498352262912,
+          "ambulance_utilization": 0.16514970072957258,
+          "total_km": 2914.702466504692,
+          "hospital_admissions": [
+            28,
+            15,
+            7
+          ]
+        },
+        {
+          "seed": 10018,
+          "return": 1803.5975725865098,
+          "length": 57,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 49,
+          "on_time_rate": 0.98,
+          "unresolved": 0,
+          "mean_wait_minutes": 2.8048548269800087,
+          "mean_referral_minutes": 94.01074818079309,
+          "ambulance_utilization": 0.1845505868193232,
+          "total_km": 3024.647960091775,
+          "hospital_admissions": [
+            30,
+            12,
+            8
+          ]
+        },
+        {
+          "seed": 10019,
+          "return": 1879.3822898333067,
+          "length": 53,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 50,
+          "on_time_rate": 1.0,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.6177101666933595,
+          "mean_referral_minutes": 95.05931081564428,
+          "ambulance_utilization": 0.1645167224210181,
+          "total_km": 2861.4372091975447,
+          "hospital_admissions": [
+            32,
+            11,
+            7
+          ]
+        }
+      ]
+    },
+    "rainy_season": {
+      "scenario": "rainy_season",
+      "seeds": [
+        10000,
+        10001,
+        10002,
+        10003,
+        10004,
+        10005,
+        10006,
+        10007,
+        10008,
+        10009,
+        10010,
+        10011,
+        10012,
+        10013,
+        10014,
+        10015,
+        10016,
+        10017,
+        10018,
+        10019
+      ],
+      "summary": {
+        "return_mean": 1742.4871141818371,
+        "return_std": 85.90562636497219,
+        "length_mean": 60.15,
+        "length_std": 12.244488556081057,
+        "completed_mean": 49.65,
+        "completed_std": 0.6538348415311009,
+        "completed_on_time_mean": 45.8,
+        "completed_on_time_std": 1.5362291495737215,
+        "on_time_rate_mean": 0.9225051020408165,
+        "on_time_rate_std": 0.029855427451523822,
+        "unresolved_mean": 0.35,
+        "unresolved_std": 0.653834841531101,
+        "mean_wait_minutes_mean": 2.730997033274246,
+        "mean_wait_minutes_std": 4.669248767976906,
+        "mean_referral_minutes_mean": 121.22766330639331,
+        "mean_referral_minutes_std": 8.080943115771213,
+        "ambulance_utilization_mean": 0.23372702440431875,
+        "ambulance_utilization_std": 0.011698591021005325,
+        "total_km_mean": 3135.8740290717146,
+        "total_km_std": 278.7464205063166,
+        "invalid_actions_mean": 0.0,
+        "invalid_actions_std": 0.0,
+        "hospital_admissions": [
+          572,
+          273,
+          148
+        ]
+      },
+      "episodes": [
+        {
+          "seed": 10000,
+          "return": 1755.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 46,
+          "on_time_rate": 0.92,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 112.72561978754882,
+          "ambulance_utilization": 0.2155081003264127,
+          "total_km": 2718.271321475556,
+          "hospital_admissions": [
+            33,
+            13,
+            4
+          ]
+        },
+        {
+          "seed": 10001,
+          "return": 1770.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 44,
+          "on_time_rate": 0.88,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 117.67180475171445,
+          "ambulance_utilization": 0.22823209832172245,
+          "total_km": 2998.7929673332173,
+          "hospital_admissions": [
+            26,
+            15,
+            9
+          ]
+        },
+        {
+          "seed": 10002,
+          "return": 1713.1094751006158,
+          "length": 73,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 47,
+          "on_time_rate": 0.9591836734693877,
+          "unresolved": 1,
+          "mean_wait_minutes": 2.6211841593609946,
+          "mean_referral_minutes": 112.2559227320591,
+          "ambulance_utilization": 0.22523528045894659,
+          "total_km": 2719.335878865802,
+          "hospital_admissions": [
+            29,
+            17,
+            3
+          ]
+        },
+        {
+          "seed": 10003,
+          "return": 1830.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 47,
+          "on_time_rate": 0.94,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 121.11458869383951,
+          "ambulance_utilization": 0.24335656357083754,
+          "total_km": 2728.2773490514264,
+          "hospital_admissions": [
+            29,
+            18,
+            3
+          ]
+        },
+        {
+          "seed": 10004,
+          "return": 1552.6022440693812,
+          "length": 87,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 43,
+          "on_time_rate": 0.8775510204081632,
+          "unresolved": 1,
+          "mean_wait_minutes": 20.326382602972743,
+          "mean_referral_minutes": 139.23218731352728,
+          "ambulance_utilization": 0.23268728258062257,
+          "total_km": 3146.803678670875,
+          "hospital_admissions": [
+            27,
+            13,
+            9
+          ]
+        },
+        {
+          "seed": 10005,
+          "return": 1748.7265465748596,
+          "length": 54,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 46,
+          "on_time_rate": 0.92,
+          "unresolved": 0,
+          "mean_wait_minutes": 1.2734534251406149,
+          "mean_referral_minutes": 123.70594305961575,
+          "ambulance_utilization": 0.23999304805828184,
+          "total_km": 3182.3959934011655,
+          "hospital_admissions": [
+            30,
+            14,
+            6
+          ]
+        },
+        {
+          "seed": 10006,
+          "return": 1794.426035590584,
+          "length": 53,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 46,
+          "on_time_rate": 0.92,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.5973991232779917,
+          "mean_referral_minutes": 124.19711537506439,
+          "ambulance_utilization": 0.23102450957892975,
+          "total_km": 3422.87443170398,
+          "hospital_admissions": [
+            33,
+            10,
+            7
+          ]
+        },
+        {
+          "seed": 10007,
+          "return": 1765.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 46,
+          "on_time_rate": 0.92,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 120.50810609912834,
+          "ambulance_utilization": 0.22612543980522778,
+          "total_km": 3302.751735583766,
+          "hospital_admissions": [
+            28,
+            9,
+            13
+          ]
+        },
+        {
+          "seed": 10008,
+          "return": 1794.6396700517519,
+          "length": 51,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 48,
+          "on_time_rate": 0.96,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.24021996549869074,
+          "mean_referral_minutes": 128.1890396464619,
+          "ambulance_utilization": 0.22915854959813964,
+          "total_km": 3467.3398182994856,
+          "hospital_admissions": [
+            27,
+            11,
+            12
+          ]
+        },
+        {
+          "seed": 10009,
+          "return": 1790.0,
+          "length": 50,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 45,
+          "on_time_rate": 0.9,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.0,
+          "mean_referral_minutes": 118.72411919633049,
+          "ambulance_utilization": 0.25029689984660664,
+          "total_km": 3008.8930652714294,
+          "hospital_admissions": [
+            28,
+            16,
+            6
+          ]
+        },
+        {
+          "seed": 10010,
+          "return": 1794.7700809939988,
+          "length": 51,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 48,
+          "on_time_rate": 0.96,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.22991900600114604,
+          "mean_referral_minutes": 111.07299579511273,
+          "ambulance_utilization": 0.23056429132669243,
+          "total_km": 3150.327717991553,
+          "hospital_admissions": [
+            25,
+            17,
+            8
+          ]
+        },
+        {
+          "seed": 10011,
+          "return": 1577.401749466102,
+          "length": 88,
+          "invalid_actions": 0,
+          "completed": 48,
+          "completed_on_time": 45,
+          "on_time_rate": 0.9375,
+          "unresolved": 2,
+          "mean_wait_minutes": 2.9453766200432105,
+          "mean_referral_minutes": 123.81257731738533,
+          "ambulance_utilization": 0.24160263282940894,
+          "total_km": 3082.250676237403,
+          "hospital_admissions": [
+            30,
+            12,
+            6
+          ]
+        },
+        {
+          "seed": 10012,
+          "return": 1564.3799489126864,
+          "length": 76,
+          "invalid_actions": 0,
+          "completed": 48,
+          "completed_on_time": 45,
+          "on_time_rate": 0.9375,
+          "unresolved": 2,
+          "mean_wait_minutes": 1.1250354773012532,
+          "mean_referral_minutes": 111.27307430723393,
+          "ambulance_utilization": 0.21984600623865716,
+          "total_km": 2820.7613808152305,
+          "hospital_admissions": [
+            29,
+            11,
+            8
+          ]
+        },
+        {
+          "seed": 10013,
+          "return": 1661.0219063208856,
+          "length": 72,
+          "invalid_actions": 0,
+          "completed": 49,
+          "completed_on_time": 45,
+          "on_time_rate": 0.9183673469387755,
+          "unresolved": 1,
+          "mean_wait_minutes": 8.934885059416827,
+          "mean_referral_minutes": 125.52167250548568,
+          "ambulance_utilization": 0.24013808124142355,
+          "total_km": 3147.3646342830543,
+          "hospital_admissions": [
+            25,
+            16,
+            8
+          ]
+        },
+        {
+          "seed": 10014,
+          "return": 1814.6314158439973,
+          "length": 52,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 47,
+          "on_time_rate": 0.94,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.4317865747633459,
+          "mean_referral_minutes": 114.90601065801097,
+          "ambulance_utilization": 0.23699349940960843,
+          "total_km": 3221.0202692138714,
+          "hospital_admissions": [
+            28,
+            14,
+            8
+          ]
+        },
+        {
+          "seed": 10015,
+          "return": 1767.9714165569662,
+          "length": 58,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 45,
+          "on_time_rate": 0.9,
+          "unresolved": 0,
+          "mean_wait_minutes": 1.9183631629106639,
+          "mean_referral_minutes": 111.85936518235572,
+          "ambulance_utilization": 0.22967902697787348,
+          "total_km": 3241.245813167483,
+          "hospital_admissions": [
+            29,
+            12,
+            9
+          ]
+        },
+        {
+          "seed": 10016,
+          "return": 1712.9457422259723,
+          "length": 58,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 42,
+          "on_time_rate": 0.84,
+          "unresolved": 0,
+          "mean_wait_minutes": 3.3797032865638177,
+          "mean_referral_minutes": 138.68450713603528,
+          "ambulance_utilization": 0.25540137290135323,
+          "total_km": 3928.3038620242037,
+          "hospital_admissions": [
+            25,
+            16,
+            9
+          ]
+        },
+        {
+          "seed": 10017,
+          "return": 1852.397087904796,
+          "length": 60,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 47,
+          "on_time_rate": 0.94,
+          "unresolved": 0,
+          "mean_wait_minutes": 2.8490349259892174,
+          "mean_referral_minutes": 125.31262015597284,
+          "ambulance_utilization": 0.23937195638117162,
+          "total_km": 3131.461983617145,
+          "hospital_admissions": [
+            28,
+            16,
+            6
+          ]
+        },
+        {
+          "seed": 10018,
+          "return": 1771.4862415845887,
+          "length": 67,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 47,
+          "on_time_rate": 0.94,
+          "unresolved": 0,
+          "mean_wait_minutes": 7.027516830823151,
+          "mean_referral_minutes": 127.76058140036196,
+          "ambulance_utilization": 0.25136282018552136,
+          "total_km": 3278.872833311548,
+          "hospital_admissions": [
+            31,
+            12,
+            7
+          ]
+        },
+        {
+          "seed": 10019,
+          "return": 1819.232722439556,
+          "length": 53,
+          "invalid_actions": 0,
+          "completed": 50,
+          "completed_on_time": 47,
+          "on_time_rate": 0.94,
+          "unresolved": 0,
+          "mean_wait_minutes": 0.7196804454212543,
+          "mean_referral_minutes": 116.02541501462157,
+          "ambulance_utilization": 0.20796302844893727,
+          "total_km": 3020.1351711160924,
+          "hospital_admissions": [
+            32,
+            11,
+            7
+          ]
+        }
+      ]
+    }
+  }
+}
