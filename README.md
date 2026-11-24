@@ -83,7 +83,7 @@ You only need [uv](https://docs.astral.sh/uv/). It downloads Python 3.11 and ins
 # macOS / Linux:         curl -LsSf https://astral.sh/uv/install.sh | sh
 # Windows (PowerShell):  powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
-git clone https://github.com/<your-github-username>/james_mukunzi_rl_summative.git
+git clone https://github.com/mukunzindahiro-max/james_mukunzi_rl_summative.git
 cd james_mukunzi_rl_summative
 uv sync
 uv run main.py
