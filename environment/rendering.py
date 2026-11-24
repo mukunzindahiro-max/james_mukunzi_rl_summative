@@ -11,7 +11,7 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from environment.custom_env import N_ACTIONS, MaternalReferralEnv, _to_builtin, describe_action
+from environment.custom_env import N_ACTIONS, OBS_SIZE, MaternalReferralEnv, _to_builtin, describe_action
 
 ROOT = Path(__file__).resolve().parent.parent
 WEB_DIR = Path(__file__).resolve().parent / "web"
@@ -218,6 +218,40 @@ class StepRequest(BaseModel):
     action: int | None = None
 
 
+class ActRequest(BaseModel):
+    policy: str = "dqn"
+    observation: list[float]
+    action_mask: list[int]
+
+
+_AGENTS = {}
+
+
+def recommend(policy, observation, action_mask):
+    if policy not in RL_POLICIES:
+        raise ValueError(f"policy must be one of {RL_POLICIES}")
+    if len(observation) != OBS_SIZE:
+        raise ValueError(f"observation must have {OBS_SIZE} numbers (got {len(observation)})")
+    if len(action_mask) != N_ACTIONS:
+        raise ValueError(f"action_mask must have {N_ACTIONS} values (got {len(action_mask)})")
+    mask = np.asarray(action_mask, dtype=np.int8)
+    if not mask.any():
+        raise ValueError("action_mask must allow at least one action")
+    if policy not in _AGENTS:
+        _AGENTS[policy] = Agent(policy)
+    agent = _AGENTS[policy]
+    obs = {"observation": np.asarray(observation, dtype=np.float32), "action_mask": mask}
+    action, scores = agent.act(None, obs)
+    return {
+        "policy": policy,
+        "policy_label": agent.label,
+        "action": action,
+        "description": describe_action(action),
+        "score_type": agent.score_type,
+        "scores": scores,
+    }
+
+
 def create_app(session):
     app = FastAPI(title="Maternal Emergency Referral RL Simulation")
     ASSETS_DIR.mkdir(exist_ok=True)
@@ -266,6 +300,13 @@ def create_app(session):
             except ValueError as err:
                 raise HTTPException(status_code=400, detail=str(err))
             return session.state()
+
+    @app.post("/api/act")
+    def act(request: ActRequest):
+        try:
+            return recommend(request.policy, request.observation, request.action_mask)
+        except ValueError as err:
+            raise HTTPException(status_code=422, detail=str(err))
 
     @app.get("/api/comparison")
     def comparison():

@@ -2,7 +2,8 @@ import json
 
 import pytest
 
-from environment.rendering import Session, best_models
+from environment.custom_env import N_ACTIONS, OBS_SIZE
+from environment.rendering import Session, best_models, recommend
 
 
 @pytest.mark.skipif("dqn" not in best_models(), reason="trained models not available")
@@ -28,3 +29,28 @@ def test_manual_session_requires_an_action():
 def test_unknown_policy_is_rejected():
     with pytest.raises(ValueError):
         Session("not_a_policy", verbose=False)
+
+
+@pytest.mark.skipif("dqn" not in best_models(), reason="trained models not available")
+def test_recommend_matches_live_session_decision():
+    session = Session("dqn", seed=10_002, verbose=False)
+    obs = session.obs
+    result = recommend("dqn", obs["observation"].tolist(), obs["action_mask"].tolist())
+    session.step()
+    assert result["action"] == session.decision["action"]
+    assert obs["action_mask"][result["action"]] == 1
+    json.dumps(result)
+
+
+@pytest.mark.parametrize(
+    "policy, observation, mask",
+    [
+        ("nearest", [0.0] * OBS_SIZE, [1] * N_ACTIONS),
+        ("dqn", [0.0] * (OBS_SIZE - 1), [1] * N_ACTIONS),
+        ("dqn", [0.0] * OBS_SIZE, [1] * (N_ACTIONS - 1)),
+        ("dqn", [0.0] * OBS_SIZE, [0] * N_ACTIONS),
+    ],
+)
+def test_recommend_rejects_bad_input(policy, observation, mask):
+    with pytest.raises(ValueError):
+        recommend(policy, observation, mask)

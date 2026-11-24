@@ -106,7 +106,7 @@ uv run main.py
 | `uv run main.py train-dqn` | train the 12 DQN experiments |
 | `uv run main.py train-pg` | train the REINFORCE, PPO and A2C experiments |
 | `uv run main.py compare` | pick the best run per algorithm, run the seed-robustness check, write `logs/comparison.json` and the figures |
-| `uv run pytest -q` | run the test suite (22 tests) |
+| `uv run pytest -q` | run the test suite (27 tests) |
 
 ### What the terminal shows
 
@@ -201,25 +201,28 @@ Every action maps to a real dispatcher's choice: "send ambulance X, take her to 
 
 ### Observations (72 numbers + 16-value action mask)
 
-All values are scaled to [−1, 1]. Everything comes from the simulator state at the moment the decision is needed.
+All values are scaled to [−1, 1]. The whole vector is rebuilt by `_get_obs()` every time a decision is needed. The "Updated when" column says when the underlying value actually changes. The "Source" column names where a real dispatcher would get it, followed by the rule the simulator uses.
 
-| Index | Meaning | Encoding |
-|---|---|---|
-| 0 | a referral is waiting | 0 or 1 |
-| 1–3 | priority: critical, urgent, moderate | one-hot |
-| 4–8 | origin health centre | one-hot (5) |
-| 9–10 | needs surgery / needs neonatal care | 0 or 1 |
-| 11 | how long she has waited | minutes / 480 |
-| 12–41 | **per ambulance** (5 × 6): free now; x and y position; time until free; time to reach her (busy time + drive); road distance from base to her | 0/1, km / 40, km / 30, min / 240, min / 240, km / 60 |
-| 42–59 | **per hospital** (3 × 6): free beds; occupancy; surgery ready today; neonatal ready today; drive time from her health centre; suitable and has a bed | fraction, fraction, 0/1, 0/1, min / 240, 0/1 |
-| 60 | referrals waiting | count / 10 |
-| 61–62 | mean and longest wait among waiting referrals | minutes / 480 |
-| 63–64 | time of day | sin, cos |
-| 65 | episode progress | minutes / 43,200 |
-| 66 | raining today | 0 or 1 |
-| 67 | km driven so far | km / 4000 |
-| 68 | coverage: health centres reachable by a free ambulance within 45 min | fraction |
-| 69–71 | referrals not yet arrived, completed, unresolved | fraction of 50, fraction of 50, count / 10 |
+| Index | Meaning | Encoding | Source (real world → simulation rule) | Updated when |
+|---|---|---|---|---|
+| 0 | a referral is waiting | 0 or 1 | referral call from the health centre → seeded arrival times (60% in clusters) | each new referral or dispatch |
+| 1–3 | priority: critical, urgent, moderate | one-hot | midwife's triage on the call → drawn 30% / 40% / 30% | each new referral |
+| 4–8 | origin health centre | one-hot (5) | caller's facility → drawn with shares 25/20/20/20/15% | each new referral |
+| 9–10 | needs surgery / needs neonatal care | 0 or 1 | clinical reason for referral → drawn by priority (all critical need surgery) | each new referral |
+| 11 | how long she has waited | minutes / 480 | call log time stamp → current time − arrival time | every decision |
+| 12–41 | **per ambulance** (5 × 6): free now; x and y position; time until free; time to reach her (busy time + drive); road distance from base to her | 0/1, km / 40, km / 30, min / 240, min / 240, km / 60 | ambulance GPS and dispatch log → position interpolated along the route; drive times from the road table for today's weather and day/night | every decision (position moves continuously; free/busy changes on dispatch, return or general-duty call) |
+| 42–59 | **per hospital** (3 × 6): free beds; occupancy; surgery ready today; neonatal ready today; drive time from her health centre; suitable and has a bed | fraction, fraction, 0/1, 0/1, min / 240, 0/1 | hospital bed board and daily unit status → background patients drawn daily, admissions held 0.5–3 days; surgery down 8% and neonatal down 10% of days | beds: on each admission or discharge; units: once per day; drive time: each new referral |
+| 60 | referrals waiting | count / 10 | dispatch queue → referrals with status `pending` | every decision |
+| 61–62 | mean and longest wait among waiting referrals | minutes / 480 | dispatch queue → current time − arrival times | every decision |
+| 63–64 | time of day | sin, cos | clock → simulated minutes since midnight | every decision |
+| 65 | episode progress | minutes / 43,200 | calendar → simulated minutes since day 1 | every decision |
+| 66 | raining today | 0 or 1 | weather report → 35% of days rainy (80% in rainy season) | once per day |
+| 67 | km driven so far | km / 4000 | vehicle logbooks → sum of planned round-trip distances | on each dispatch |
+| 68 | coverage: health centres reachable by a free ambulance within 45 min | fraction | dispatcher's coverage map → free ambulance bases and today's road table | on each dispatch, return or condition change |
+| 69–71 | referrals not yet arrived, completed, unresolved | fraction of 50, fraction of 50, count / 10 | monthly referral register → referral statuses | on each arrival, hospital handover or 8-hour timeout |
+| mask | 16 valid / invalid actions | 0 or 1 | same sources → ambulance free, hospital has the unit and a free bed | every decision |
+
+**From the environment to the network.** `MaternalReferralEnv.step()` returns the dictionary `{"observation": 72 floats, "action_mask": 16 ints}`. TorchRL's `GymWrapper` (`training/common.py`) turns it into a `TensorDict`. The 72 numbers go into the network's 128 × 128 MLP. The mask is applied to the output: DQN ignores Q-values of invalid actions, and the policy-gradient agents sample from a `MaskedCategorical`. Outside training, the same two arrays can be sent to `POST /api/act` (see [HTTP API](#http-api)).
 
 **State carried from step to step.** Each dispatch locks an ambulance for its whole round trip. Admissions occupy beds for 0.5 to 3 days depending on priority. Rain, outages and general-duty calls change what is possible later. The agent's choices therefore shape the states it will face next.
 
@@ -325,6 +328,7 @@ The same FastAPI server that powers the 3D view can be used by any other app (a 
 | `GET` | `/api/state` | full state: clock, weather, ambulances with positions and routes, hospital beds and units, referrals, action mask, last decision, metrics, event log |
 | `POST` | `/api/reset` | new episode: `{"policy": "dqn", "scenario": "standard", "seed": 10000}` |
 | `POST` | `/api/step` | let the agent decide, or send `{"action": 4}` to make your own choice (`manual` policy) |
+| `POST` | `/api/act` | **ask a trained agent for one decision**: send 72 observation numbers and the 16-value action mask, get back the recommended action and its top-5 scores |
 | `GET` | `/api/policies` | available agents and which trained run each uses |
 | `GET` | `/api/scenarios` | `standard`, `rainy_season` |
 | `GET` | `/api/comparison` | the final comparison (`logs/comparison.json`) |
@@ -335,6 +339,24 @@ curl -X POST http://127.0.0.1:8000/api/reset -H "Content-Type: application/json"
      -d '{"policy": "dqn", "scenario": "rainy_season", "seed": 10003}'
 curl -X POST http://127.0.0.1:8000/api/step -H "Content-Type: application/json" -d '{}'
 ```
+
+**One decision for another app (`POST /api/act`).** A dashboard or mobile app builds the observation from its own data, in the order of the [observation table](#observations-72-numbers--16-value-action-mask), and asks the agent what to do. `policy` can be `dqn`, `ppo`, `a2c` or `reinforce`.
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/act -H "Content-Type: application/json" \
+     -d '{"policy": "dqn", "observation": [/* 72 numbers */], "action_mask": [/* 16 zeros or ones */]}'
+```
+
+```json
+{"policy": "dqn", "policy_label": "DQN (dqn_09_buffer_20k)",
+ "action": 11, "description": "Dispatch Ambulance 4 -> Eastern Rural Hospital", "score_type": "Q-value",
+ "scores": [{"action": 11, "description": "Dispatch Ambulance 4 -> Eastern Rural Hospital", "score": 187.91},
+            {"action": 12, "description": "Dispatch Ambulance 4 -> Provincial Referral Hospital", "score": 187.10}, "..."]}
+```
+
+Wrong input is refused with HTTP 422 and a plain message, for example `{"detail": "observation must have 72 numbers (got 2)"}`. A test (`tests/test_rendering.py`) checks that `/api/act` gives exactly the same decision as the agent makes inside the live simulation.
+
+**Interactive API docs:** with the server running, open `http://127.0.0.1:8000/docs` to see every route and try it from the browser.
 
 Trained models are saved as PyTorch state dicts in `models/dqn/` and `models/pg/`. The best run per algorithm is listed in `models/best_models.json`, and the server loads models from there.
 
