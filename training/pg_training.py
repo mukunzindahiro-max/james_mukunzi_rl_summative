@@ -125,6 +125,7 @@ SUMMARY_COLUMNS = {
 ALGORITHM_LABELS = {"reinforce": "REINFORCE", "ppo": "PPO", "a2c": "A2C"}
 
 
+# Policy network: action probabilities, invalid actions get zero
 def build_actor(hidden):
     logits = TensorDictModule(
         MLP(in_features=OBS_SIZE, out_features=N_ACTIONS, num_cells=hidden, activation_class=nn.Tanh),
@@ -140,6 +141,7 @@ def build_actor(hidden):
     )
 
 
+# Value network used by PPO, A2C and the REINFORCE baseline
 def build_critic(hidden):
     return ValueOperator(
         MLP(in_features=OBS_SIZE, out_features=1, num_cells=hidden, activation_class=nn.Tanh),
@@ -206,6 +208,7 @@ class Collector:
         return torch.stack(transitions), completed
 
 
+# Monte-Carlo returns for REINFORCE
 def discounted_returns(batch, gamma):
     rewards = batch["next", "reward"].squeeze(-1)
     dones = batch["next", "done"].squeeze(-1)
@@ -316,6 +319,7 @@ def train_reinforce(trainer):
             advantage = returns - values.detach()
         if config["normalize_returns"] and advantage.numel() > 1:
             advantage = (advantage - advantage.mean()) / (advantage.std() + 1e-8)
+        # Policy gradient: raise log-probability of actions with high return
         dist = trainer.actor.get_dist(batch.select("observation", "action_mask").clone())
         log_prob = dist.log_prob(batch["action"])
         entropy = dist.entropy().mean()
@@ -336,6 +340,7 @@ def train_actor_critic(trainer, loss_module, epochs, minibatch_size):
     while not trainer.collector.finished:
         batch, completed = trainer.collector.collect(max_steps=config["rollout_steps"])
         trainer.record_episodes(completed)
+        # GAE advantages from the critic
         with torch.no_grad():
             advantage_module(batch)
             if config.get("normalize_advantage") and batch.shape[0] > 1:
@@ -343,6 +348,7 @@ def train_actor_critic(trainer, loss_module, epochs, minibatch_size):
                 batch["advantage"] = (advantage - advantage.mean()) / (advantage.std() + 1e-8)
         size = batch.shape[0]
         stats = []
+        # Several passes over the rollout in minibatches
         for _ in range(epochs):
             for idx in torch.randperm(size).split(min(minibatch_size, size)):
                 minibatch = batch[idx].clone()

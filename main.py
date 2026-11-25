@@ -17,6 +17,7 @@ COMMANDS = {
 }
 
 
+# Best agent from models/best_models.json (DQN)
 def best_policy():
     path = ROOT / "models" / "best_models.json"
     return json.loads(path.read_text())["overall_best"] if path.exists() else "nearest"
@@ -43,6 +44,7 @@ def main():
     args, rest = parser.parse_known_args()
     policy = args.policy or best_policy()
 
+    # Default: 3D simulation with the best agent
     if args.command == "simulate":
         from environment.rendering import serve
 

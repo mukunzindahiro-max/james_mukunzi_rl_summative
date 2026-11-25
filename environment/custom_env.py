@@ -4,6 +4,7 @@ import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
 
+# Episode: 30 days, 50 referrals, 5 ambulances, 3 hospitals
 MINUTES_PER_DAY = 1440
 EPISODE_DAYS = 30
 EPISODE_MINUTES = EPISODE_DAYS * MINUTES_PER_DAY
@@ -14,6 +15,7 @@ N_AMBULANCES = 5
 N_ACTIONS = 1 + N_AMBULANCES * N_HOSPITALS
 WAIT_ACTION = 0
 
+# District map: (name, type, x km, y km)
 NODES = [
     ("Rubona Health Centre", "health_centre", 8.0, 24.0),
     ("Kagarama Health Centre", "health_centre", 16.0, 4.0),
@@ -102,6 +104,7 @@ DISTANCE_NORM_KM = 60.0
 BUDGET_NORM_KM = 4000.0
 PENDING_NORM = 10.0
 
+# Reward for each event
 DEFAULT_REWARDS = {
     "dispatch_appropriate": 10.0,
     "completed_on_time": 20.0,
@@ -150,6 +153,7 @@ def _to_builtin(value):
     return value
 
 
+# Shortest travel times for dry/rain and day/night (Floyd-Warshall)
 def _build_road_tables():
     coords = np.array([[x, y] for _, _, x, y in NODES], dtype=np.float64)
     n = len(NODES)
@@ -229,6 +233,7 @@ class MaternalReferralEnv(gym.Env):
         self.t = 0.0
         self.steps = 0
         self.total_km = 0.0
+        # Random rain days, unit outages and bed occupancy for this episode
         self.rain = rng.random(EPISODE_DAYS) < self.rain_prob
         self.surgery_ready = np.zeros((EPISODE_DAYS, N_HOSPITALS), dtype=bool)
         self.neonatal_ready = np.zeros((EPISODE_DAYS, N_HOSPITALS), dtype=bool)
@@ -269,6 +274,7 @@ class MaternalReferralEnv(gym.Env):
         self._reward_parts = {}
         referral = self._current_referral()
         outcome = "wait"
+        # Check the chosen ambulance and hospital before dispatching
         if action != WAIT_ACTION and referral is not None:
             ambulance, hospital = decode_action(action)
             if not self._hospital_suitable(hospital, referral):
@@ -301,6 +307,7 @@ class MaternalReferralEnv(gym.Env):
             self.render()
         return self._get_obs(), reward, terminated, truncated, self._get_info(outcome)
 
+    # 1 = valid action: ambulance free, hospital has the unit and a bed
     def action_mask(self):
         mask = np.zeros(N_ACTIONS, dtype=np.int8)
         mask[WAIT_ACTION] = 1
@@ -454,6 +461,7 @@ class MaternalReferralEnv(gym.Env):
         pickups = {a: minutes[self.ambulances[a]["base"], origin] for a, _ in valid}
         coverage_after = {a: self._coverage(exclude=a) for a in pickups}
 
+        # Dispatch rewards: valid, short trip, good coverage, not too far
         self._add_reward("dispatch_appropriate", self.rewards["dispatch_appropriate"])
         if trip_km[(ambulance, hospital)] <= REDUCED_TRAVEL_TOLERANCE * min(trip_km.values()) + 1e-6:
             self._add_reward("reduced_travel", self.rewards["reduced_travel"])
@@ -462,6 +470,7 @@ class MaternalReferralEnv(gym.Env):
         if pickups[ambulance] > min(pickups.values()) + UNNECESSARY_PICKUP_MARGIN_MINUTES:
             self._add_reward("unnecessary_dispatch", self.rewards["unnecessary_dispatch"])
 
+        # Round trip: base -> health centre -> hospital -> base
         t0 = self.t
         waypoints = self._route(base, origin, t0)
         waypoints.append((waypoints[-1][0] + LOAD_MINUTES, origin))
@@ -493,6 +502,7 @@ class MaternalReferralEnv(gym.Env):
             f"ETA hospital {self._clock(hospital_arrival)}"
         )
 
+    # Move time forward and apply waiting, late and on-time rewards
     def _advance(self, t_new):
         t_new = min(t_new, EPISODE_MINUTES)
         t_old = self.t
@@ -560,6 +570,7 @@ class MaternalReferralEnv(gym.Env):
         future = [c for c in candidates if c > self.t]
         return max(min(future + [self.t + WAIT_STEP_MINUTES]), self.t + 1.0)
 
+    # End when all referrals are resolved, 10 are unresolved, or 30 days pass
     def _check_end(self):
         unresolved = sum(r["status"] == "unresolved" for r in self.referrals)
         if self.t >= EPISODE_MINUTES:
@@ -577,6 +588,7 @@ class MaternalReferralEnv(gym.Env):
         referral = self._current_referral()
         minutes, km, _ = self._table()
         origin = None
+        # Referral features
         if referral is not None:
             origin = HEALTH_CENTRE_NODES[referral["origin"]]
             obs[0] = 1.0
@@ -585,6 +597,7 @@ class MaternalReferralEnv(gym.Env):
             obs[9] = float(referral["needs_surgery"])
             obs[10] = float(referral["needs_neonatal"])
             obs[11] = min((self.t - referral["arrival"]) / MAX_WAIT_MINUTES, 1.0)
+        # Ambulance features
         i = REFERRAL_FEATURES
         for a, amb in enumerate(self.ambulances):
             idle = self._ambulance_idle(a)
@@ -601,6 +614,7 @@ class MaternalReferralEnv(gym.Env):
                 obs[i + 4] = min((remaining + minutes[amb["base"], origin]) / TIME_NORM_MINUTES, 1.0)
                 obs[i + 5] = min(km[amb["base"], origin] / DISTANCE_NORM_KM, 1.0)
             i += AMBULANCE_FEATURES
+        # Hospital features
         day = self._day()
         for h, spec in enumerate(HOSPITALS):
             free = self._free_beds(h)
@@ -614,6 +628,7 @@ class MaternalReferralEnv(gym.Env):
                 obs[i + 4] = min(minutes[origin, spec["node"]] / TIME_NORM_MINUTES, 1.0)
                 obs[i + 5] = float(self._hospital_suitable(h, referral) and free > 0)
             i += HOSPITAL_FEATURES
+        # Global features: queue, time, weather, coverage, progress
         pending = self._pending()
         waits = [self.t - r["arrival"] for r in pending]
         phase = 2.0 * math.pi * (self.t % MINUTES_PER_DAY) / MINUTES_PER_DAY

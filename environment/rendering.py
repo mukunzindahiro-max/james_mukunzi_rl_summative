@@ -40,6 +40,7 @@ def best_models():
     return json.loads(BEST_MODELS_PATH.read_text())["models"]
 
 
+# Loads a trained model or a baseline policy
 class Agent:
     def __init__(self, key):
         if key not in POLICIES:
@@ -88,6 +89,7 @@ class Agent:
                 values = self.actor(td)["action_value"]
             else:
                 values = self.actor.get_dist(td).probs
+        # Pick the best valid action
         values = values.numpy()
         valid = np.flatnonzero(obs["action_mask"])
         action = int(valid[np.argmax(values[valid])])
@@ -105,6 +107,7 @@ def referral_text(view):
     return f"#{view['id']:<2} {view['priority_name']:<8} @ {view['origin_name']:<24} needs {'+'.join(needs) or 'basic':<16}"
 
 
+# One running episode shared by the 3D view and the terminal log
 class Session:
     def __init__(self, policy="dqn", scenario="standard", seed=DEFAULT_SEED, verbose=True):
         self.lock = threading.Lock()
@@ -227,6 +230,7 @@ class ActRequest(BaseModel):
 _AGENTS = {}
 
 
+# One decision for another app (POST /api/act)
 def recommend(policy, observation, action_mask):
     if policy not in RL_POLICIES:
         raise ValueError(f"policy must be one of {RL_POLICIES}")
@@ -252,6 +256,7 @@ def recommend(policy, observation, action_mask):
     }
 
 
+# FastAPI server for the 3D view and the API
 def create_app(session):
     app = FastAPI(title="Maternal Emergency Referral RL Simulation")
     ASSETS_DIR.mkdir(exist_ok=True)

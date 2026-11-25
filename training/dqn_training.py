@@ -61,6 +61,7 @@ EXPERIMENTS = [
 SUMMARY_COLUMNS = ["learning_rate", "epsilon_decay", "batch_size", "buffer_size", "target_update", "double_dqn"]
 
 
+# Q-network: 72 inputs -> one Q-value per action, invalid actions masked
 def build_actor(hidden):
     return QValueActor(
         MLP(in_features=OBS_SIZE, out_features=N_ACTIONS, num_cells=hidden, activation_class=nn.ReLU),
@@ -93,6 +94,7 @@ def train(experiment, episodes=TRAIN_EPISODES, verbose=True):
     rng = np.random.default_rng(config["seed"])
     env = make_env()
     actor = build_actor(config["hidden"])
+    # Double DQN loss with a target network and replay buffer
     loss_module = DQNLoss(
         actor,
         action_space="categorical",
@@ -113,6 +115,7 @@ def train(experiment, episodes=TRAIN_EPISODES, verbose=True):
         td = prepare(env.reset(seed=train_seed(config["seed"], episode)))
         ep_return, ep_len, losses, q_values = 0.0, 0, [], []
         while True:
+            # Epsilon-greedy: random valid action or best Q-value
             if rng.random() < epsilon:
                 action = int(rng.choice(np.flatnonzero(td["action_mask"].numpy())))
             else:
@@ -126,6 +129,7 @@ def train(experiment, episodes=TRAIN_EPISODES, verbose=True):
             buffer.add(transition)
             total_steps += 1
             ep_len += 1
+            # Learn from a random batch of past transitions
             if total_steps >= config["learning_starts"]:
                 batch = buffer.sample()
                 loss = loss_module(batch)["loss"]
@@ -146,6 +150,7 @@ def train(experiment, episodes=TRAIN_EPISODES, verbose=True):
         history["loss"].append(float(np.mean(losses)) if losses else None)
         history["q_value"].append(float(np.mean(q_values)) if q_values else None)
         history["epsilon"].append(epsilon)
+        # Validate every 50 episodes and keep the best model
         if (episode + 1) % VALIDATE_EVERY == 0 or episode + 1 == episodes:
             score = validate(greedy_action(actor))
             history["validation"].append({"episode": episode + 1, "return": score, "steps": total_steps})
